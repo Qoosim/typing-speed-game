@@ -1,17 +1,29 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './HomePage.module.css';
 import randomWords from 'random-words';
-const NUMB_OF_WORDS = 200;
+const NUMB_OF_WORDS = 100;
 
 const HomePage = () => {
   const [timer, setTimer] = useState(0);
   const [words, setWords] = useState([]);
-  const [countDown, setCountDown] = useState(timer);
+  const [currInput, setCurrInput] = useState("");
+  const [currWordIndex, setCurrWordIndex] = useState(0);
+  const [currCharIndex, setCurrCharIndex] = useState(-1);
+  const [currChar, setCurrChar] = useState("");
+  const [correctWords, setCorrectWords] = useState(0);
+  const [incorrectWords, setIncorrectWords] = useState(0);
+  const [gameStatus, setGameStatus] = useState("Waiting");
   const textRef = useRef(null);
 
   useEffect(() => {
     setWords(generateWords());
   }, [])
+
+  useEffect(() => {
+    if (gameStatus === 'started') {
+      textRef.current.focus();
+    }
+  }, [gameStatus])
 
   const generateWords = () => {
     return new Array(NUMB_OF_WORDS).fill(null).map(() => randomWords());
@@ -21,6 +33,75 @@ const HomePage = () => {
     e.preventDefault();
     const theTime = timer;
     return theTime;
+  }
+
+  const start = () => {
+    if (gameStatus === 'finished') {
+      setWords(generateWords());
+      setCurrWordIndex(0);
+      setCorrectWords(0);
+      setIncorrectWords(0);
+      setCurrCharIndex(-1);
+      setCurrChar("");
+    }
+
+    if (gameStatus !== 'started') {
+      setGameStatus('started');
+      let interval = setInterval(() => {
+        setTimer((prevState) => {
+          if (prevState === 0) {
+            clearInterval(interval);
+            setGameStatus('finished');
+            setCurrInput("");
+            return timer;
+          } else {
+            return prevState - 1;
+          }
+        });
+      }, 1000)
+    }
+  }
+
+  const handleKeyDown = ({ keyCode, key }) => {
+    // space bar
+    if (keyCode === 32) {
+      checkMatch();
+      setCurrInput("");
+      setCurrWordIndex(currWordIndex + 1);
+      setCurrCharIndex(-1);
+      // backspace
+    } else if (keyCode === 8) {
+      setCurrCharIndex(currCharIndex - 1);
+      setCurrChar("");
+    } else {
+      setCurrCharIndex(currCharIndex + 1);
+      setCurrChar(key);
+    }
+  }
+
+  const checkMatch = () => {
+    const wordToCompare = words[currWordIndex];
+    const doesItMatch = wordToCompare === currInput.trim();
+    if (doesItMatch) {
+      setCorrectWords(correctWords + 1);
+    } else {
+      setIncorrectWords(incorrectWords + 1);
+    }
+  }
+
+  const getCharClass = (wordIdx, charIdx, char) => {
+    if (wordIdx === currWordIndex && charIdx === currCharIndex &&
+    currChar && gameStatus !== 'finished') {
+      if (char === currChar) {
+        return 'bg-success';
+      } else {
+        return 'bg-danger';
+      }
+    } else if (wordIdx === currWordIndex && currWordIndex >= words[currWordIndex].length) {
+      return 'bg-danger';
+    } else {
+      return "";
+    }
   }
 
   return (
@@ -52,23 +133,45 @@ const HomePage = () => {
           </div>
           <div>
             <input
+              ref={textRef}
               type="text"
               className="form-control mb-5"
+              onKeyDown={handleKeyDown}
+              value={currInput}
+              onChange={(e) => setCurrInput(e.target.value)}
+              disabled={gameStatus !== 'started'}
             />
           </div>
           <div>
-            <button type="button" className={`btn ${styles.startBtn}`}>Start</button>
+            <button
+              type="button"
+              className={`btn ${styles.startBtn}`}
+              onClick={start}
+            >
+              Start
+            </button>
           </div>
-          <div className="card mt-5">
-            <div className="card-body">
-              { words.map((word, i) => (
-                <span key={i}>
-                  {word}
-                  {' '}
-                </span>
-              ))}
+          { gameStatus === 'started' && (
+            <div className="card mt-5">
+              <div className="card-body">
+                { words.map((word, i) => (
+                    <span key={i}>
+                      { word.split("").map((char, idx) => (
+                          <span
+                            key={idx}
+                            className={getCharClass(i, idx, char)}
+                          >
+                            {char}
+                          </span>
+                        ))
+                      }
+                      {' '}
+                    </span>
+                  ))
+                }
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </main>
