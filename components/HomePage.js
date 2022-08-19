@@ -43,6 +43,7 @@ const HomePage = () => {
       setIncorrectWords(0);
       setCurrCharIndex(-1);
       setCurrChar("");
+      setTimer(0);
     }
 
     if (gameStatus !== 'started') {
@@ -108,7 +109,7 @@ const HomePage = () => {
     <main className="container">
       <div className="row">
         <div className="col-md-8 offset-md-2 my-5">
-          <div className="text-success text-center mb-5">
+          <div className="text-center mb-5">
             <form
               onSubmit={handleSubmit}
               className="d-flex justify-content-center mb-3"
@@ -129,7 +130,7 @@ const HomePage = () => {
                 Add
               </button>
             </form>
-            <h2 className="fs-2">{timer}</h2>
+            <h2 className={`fs-2 ${styles.timer}`}>{timer}</h2>
           </div>
           <div>
             <input
@@ -169,6 +170,20 @@ const HomePage = () => {
                     </span>
                   ))
                 }
+              </div>
+            </div>
+          )}
+          { gameStatus === 'finished' && (
+            <div className="p-5 d-flex justify-content-between">
+              <div className="text-center">
+                <h2 className="fs-3">WPM</h2>
+                <p className={`fs-2 ${styles.wpm}`}>{correctWords}</p>
+              </div>
+              <div className="text-center">
+                <h2 className="fs-3">Accuracy</h2>
+                <p className={`fs-2 ${styles.accuracy}`}>
+                  { Math.round((correctWords / (correctWords + incorrectWords)) * 100) } %
+                </p>
               </div>
             </div>
           )}

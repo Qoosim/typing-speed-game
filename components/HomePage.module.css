@@ -20,3 +20,15 @@
   font-weight: bold;
   margin-left: 1rem;
 }
+
+.timer {
+  color: #00d1b2;
+}
+
+.accuracy {
+  color: #3e8ed0;
+}
+
+.wpm {
+  color: #00d1b2;
+}
