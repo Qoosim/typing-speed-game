@@ -108,8 +108,9 @@ const HomePage = () => {
   return (
     <main className="container">
       <div className="row">
-        <div className="col-md-8 offset-md-2 my-5">
+        <div className="col-md-8 offset-md-2 my-4">
           <div className="text-center mb-5">
+            <h2 className={styles.title}>How fast do you type?</h2>
             <form
               onSubmit={handleSubmit}
               className="d-flex justify-content-center mb-3"

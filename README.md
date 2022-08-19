@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Typing Speed App 
+
+> This is a typing speed app built with nextjs and react. You set the timer by typing any seconds of your choice and press start button to fire up the game. Your words per minute and the accuracy of your typing would be displayed after you exhaust your time. I plan to add more features to the app in future and decomponse the homepage component into several components
+
+![screenshot](./components/images/typing-game-1.png)
+
+![screenshot](./components/images/typing-game-2.png)
+
+![screenshot](./components/images/typing-game-3.png)
+
+## ⚒️  Built with
+
+- Html
+- Css
+- JavaScript
+- React
+- Nextjs
+
+## 🎞️ Frameworks and Technologies used
+
+- Bootstrap
+- Webpack
+- HTML
+- CSS
+- JavaScript
+- ReactJS
+- NextJS
+
+## 🖥️ Live Demo
+- [Heroku]() :point_left:
+- [Netlify]() :point_left:
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+To get a local copy up and running on your machine, follow these simple steps.
+Enter this in your terminal 👇 
+``` 
+  git clone git@github.com:Qoosim/typing-speed-game.git 
+``` 
+## 🛠️ Prerequisites
 ```
+  Install Node.js on your machine
+```
+## 🕹️ Setup
+```
+  Clone the repository on your machine and cd into it
+  run npm install
+  run npm run dev 
+```
+## Author
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👤 **Qoosim AbdulGhaniyy**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- GitHub: [Qoosim](https://github.com/Qoosim)
+- LinkedIn: [Qoosim](https://www.linkedin.com/in/qoosim)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🤝 Contributing
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Contributions, issues, and feature requests are welcome!
 
-## Learn More
+Feel free to check the [issues page](../../issues/).
 
-To learn more about Next.js, take a look at the following resources:
+## Show your support
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Give a ⭐️ if you like this project!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Acknowledgments
 
-## Deploy on Vercel
+- To those assist in understanding the concept of React 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is [MIT](./MIT.md) licensed.

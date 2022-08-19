@@ -13,6 +13,13 @@
   outline: 1px solid #3e8ed0;
 }
 
+.title {
+  color: #3e8ed0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
 .addBtn {
   background: #3e8ed0;
   color: #fff;
