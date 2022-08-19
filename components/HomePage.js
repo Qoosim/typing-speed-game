@@ -1,8 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './HomePage.module.css';
+import randomWords from 'random-words';
+const NUMB_OF_WORDS = 200;
 
 const HomePage = () => {
   const [timer, setTimer] = useState(0);
+  const [words, setWords] = useState([]);
+  const [countDown, setCountDown] = useState(timer);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    setWords(generateWords());
+  }, [])
+
+  const generateWords = () => {
+    return new Array(NUMB_OF_WORDS).fill(null).map(() => randomWords());
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,7 +61,12 @@ const HomePage = () => {
           </div>
           <div className="card mt-5">
             <div className="card-body">
-              This is some text within the card body
+              { words.map((word, i) => (
+                <span key={i}>
+                  {word}
+                  {' '}
+                </span>
+              ))}
             </div>
           </div>
         </div>
