@@ -27,8 +27,7 @@
 - NextJS
 
 ## 🖥️ Live Demo
-- [Heroku]() :point_left:
-- [Netlify]() :point_left:
+- [Vercel](https://typing-speed-game-tau.vercel.app/) :point_left:
 
 ## Getting Started
 
