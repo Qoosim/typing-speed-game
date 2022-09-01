@@ -2,11 +2,19 @@
 
 > This is a typing speed app built with nextjs and react. You set the timer by typing any seconds of your choice and press start button to fire up the game. Your words per minute and the accuracy of your typing would be calculated and displayed after your time expires. My plan is to add more features to the app in future and decompose the homepage component into several components
 
+### Homepage
+
 ![screenshot](./components/images/typing-game-1.png)
+
+### Set timer
 
 ![screenshot](./components/images/set-timer.png)
 
+### Start the game
+
 ![screenshot](./components/images/gamestart.png)
+
+### Game over
 
 ![screenshot](./components/images/accuracy.png)
 
