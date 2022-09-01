@@ -4,9 +4,11 @@
 
 ![screenshot](./components/images/typing-game-1.png)
 
-![screenshot](./components/images/typing-game-2.png)
+![screenshot](./components/images/set-timer.png)
 
-![screenshot](./components/images/typing-game-3.png)
+![screenshot](./components/images/gamestart.png)
+
+![screenshot](./components/images/accuracy.png)
 
 ## ⚒️  Built with
 
