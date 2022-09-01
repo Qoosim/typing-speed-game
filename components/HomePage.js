@@ -5,6 +5,7 @@ const NUMB_OF_WORDS = 100;
 
 const HomePage = () => {
   const [timer, setTimer] = useState(0);
+  const [timerValue, setTimerValue] = useState(0);
   const [words, setWords] = useState([]);
   const [currInput, setCurrInput] = useState("");
   const [currWordIndex, setCurrWordIndex] = useState(0);
@@ -31,8 +32,9 @@ const HomePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const theTime = timer;
-    return theTime;
+    const timeCounter = timer;
+    setTimerValue(timeCounter);
+    setTimer(0);
   }
 
   const start = () => {
@@ -49,12 +51,12 @@ const HomePage = () => {
     if (gameStatus !== 'started') {
       setGameStatus('started');
       let interval = setInterval(() => {
-        setTimer((prevState) => {
+        setTimerValue((prevState) => {
           if (prevState === 0) {
             clearInterval(interval);
             setGameStatus('finished');
             setCurrInput("");
-            return timer;
+            setTimerValue(0);
           } else {
             return prevState - 1;
           }
@@ -131,7 +133,7 @@ const HomePage = () => {
                 Add
               </button>
             </form>
-            <h2 className={`fs-2 ${styles.timer}`}>{timer}</h2>
+            <h2 className={`fs-2 ${styles.timer}`}>{timerValue}</h2>
           </div>
           <div>
             <input
